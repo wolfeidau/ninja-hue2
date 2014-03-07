@@ -9,7 +9,7 @@ installpath    := $(tempdir)/opt/ninja/drivers/ninja-hue2
 define DEB_CONTROL
 Package: ninja-hue2
 Version: $(VERSION)
-Architecture: amd64
+Architecture: all
 Maintainer: "Mark Wolfe" <mark.wolfe@ninjablocks.com>
 Section: ninjablocks
 Priority: optional
@@ -31,8 +31,9 @@ deb: driver/ninja-hue2
 	rm -rf $(tempdir)
 
 driver/ninja-hue2:
-	git clone git://github.com/heroku/heroku-buildpack-nodejs.git .build
-	.build/bin/compile . .build/cache/
+#	git clone git://github.com/heroku/heroku-buildpack-nodejs.git .build
+#	.build/bin/compile . .build/cache/
+	npm install --production
 
 clean:
 	rm -rf ./node_modules
